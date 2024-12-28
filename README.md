@@ -48,4 +48,4 @@ For night owls (human or feline), MeowTime features a sleek dark mode that’s e
 - **Feline Audio Fun**: Perfectly tuned meow sounds for maximum cat-attraction potential.
 
 ## 🚀 Why Wait? Get MeowTime Now!
-With MeowTime, you don’t just track time—you make memories, summon cats, and enjoy life with a touch of whimsy. Clone it, install it, and bring your furry friend closer today.README
+With MeowTime, you don’t just track time—you make memories, summon cats, and enjoy life with a touch of whimsy. Clone it, install it, and bring your furry friend closer today.

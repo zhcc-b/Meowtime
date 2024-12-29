@@ -19,9 +19,11 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.ui.draw.blur
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.BlendMode
@@ -41,13 +43,13 @@ fun FlipClockWithBackground(
     batteryLevel: String,
     location: String,
     date: String,
-    dayOfWeek: String, // 接收星期
+    dayOfWeek: String,
     hour: String,
     minute: String,
     second: String,
     amPm: String,
-    backgroundRes: Int, // 添加背景资源参数
-    onPlayAudio: () -> Unit // 用于处理播放音频
+    backgroundRes: Int,
+    onPlayAudio: () -> Unit
 
 ) {
     Box(
@@ -87,12 +89,12 @@ fun DynamicFlipClock(
     batteryLevel: String,
     location: String,
     date: String,
-    dayOfWeek: String, // 接收星期
+    dayOfWeek: String,
     hour: String,
     minute: String,
     second: String,
     amPm: String,
-    onPlayAudio: () -> Unit // 用于处理播放音频
+    onPlayAudio: () -> Unit
 ) {
     // 定义用于动态偏移的 Animatable
     val offsetX = remember { Animatable(0f) }
@@ -154,7 +156,7 @@ fun FlipClock(
     minute: String,
     second: String,
     amPm: String,
-    onPlayAudio: () -> Unit // 用于处理播放音频
+    onPlayAudio: () -> Unit
 ) {
     val configuration = LocalConfiguration.current
     val screenWidthDp = configuration.screenWidthDp
@@ -256,20 +258,22 @@ fun FlipClock(
         }
         // 添加右下角的播放按钮
         Button(
-            onClick = { onPlayAudio() }, // 使用传入的 Lambda 参数
+            onClick = { onPlayAudio() },
             modifier = Modifier
                 .align(Alignment.BottomEnd)
                 .padding(16.dp)
-                .size(48.dp), // 调整按钮大小
-            colors = ButtonDefaults.buttonColors(containerColor = Color.Transparent), // 设置透明背景
-            contentPadding = PaddingValues(0.dp), // 去掉内边距
-            shape = CircleShape // 按钮圆形化
+                .size(48.dp),
+            colors = ButtonDefaults.buttonColors(containerColor = Color.Transparent),
+            contentPadding = PaddingValues(0.dp),
+            shape = CircleShape
         ) {
             Image(
-                painter = painterResource(id = R.drawable.cat_icon), // 小猫图案资源 ID
+                painter = painterResource(id = R.drawable.cat_icon),
                 contentDescription = "Play Audio",
                 contentScale = ContentScale.Crop,
-                modifier = Modifier.size(30.dp) // 调整小猫图案大小
+                modifier = Modifier
+                    .size(30.dp)
+                    .clip(RoundedCornerShape(8.dp))
             )
         }
     }

@@ -48,7 +48,7 @@ class MainActivity : ComponentActivity() {
 
 
     private lateinit var fusedLocationClient: FusedLocationProviderClient
-    private val dateFormat = SimpleDateFormat("MM/dd/yyyy", Locale.getDefault()) // 提取为共享变量
+    private val dateFormat = SimpleDateFormat("MM/dd/yyyy", Locale.getDefault())
 
     private val batteryReceiver = object : BroadcastReceiver() {
         override fun onReceive(context: Context?, intent: Intent?) {
@@ -89,19 +89,19 @@ class MainActivity : ComponentActivity() {
                 Box(
                     modifier = Modifier
                         .fillMaxSize()
-                        .background(Color(0xFF121212)) // 设置深色背景
+                        .background(Color(0xFF121212))
                 ) {
                     FlipClockWithBackground(
                         batteryLevel = batteryLevelState.value,
                         location = locationState.value,
                         date = dateState.value,
-                        dayOfWeek = dayOfWeekState.value, // 传递星期
+                        dayOfWeek = dayOfWeekState.value,
                         hour = hourState.value,
                         minute = minuteState.value,
                         second = secondState.value,
                         amPm = amPmState.value,
-                        backgroundRes = getBackgroundForTime(), // 动态背景
-                        onPlayAudio = { playAudio() } // 将播放音频的功能作为参数传递
+                        backgroundRes = getBackgroundForTime(),
+                        onPlayAudio = { playAudio() }
 
                     )
                 }
@@ -122,17 +122,17 @@ class MainActivity : ComponentActivity() {
 
     fun playAudio() {
         if (mediaPlayer == null) {
-            mediaPlayer = MediaPlayer.create(this, R.raw.audio_file) // 替换为你的音频资源
+            mediaPlayer = MediaPlayer.create(this, R.raw.audio_file)
         }
         mediaPlayer?.start()
     }
-
+    // 获取当前时间对应的背景图
     private fun getBackgroundForTime(): Int {
         val currentHour = Calendar.getInstance().get(Calendar.HOUR_OF_DAY)
         return when {
-            currentHour in 6..11 -> R.drawable.morning_background // 早晨 6 点到 11 点
-            currentHour in 12..17 -> R.drawable.afternoon_background // 下午 12 点到 17 点
-            else -> R.drawable.jiguang // 夜晚 18 点到凌晨 5 点
+            currentHour in 6..11 -> R.drawable.morning_background
+            currentHour in 12..17 -> R.drawable.afternoon_background
+            else -> R.drawable.jiguang
         }
     }
 
@@ -165,7 +165,7 @@ class MainActivity : ComponentActivity() {
                 100
             )
         } else {
-            getLocationWithLocationManager() // 使用 LocationManager 获取位置
+            getLocationWithLocationManager()
         }
     }
 

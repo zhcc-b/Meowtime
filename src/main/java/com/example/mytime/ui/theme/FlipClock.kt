@@ -125,7 +125,7 @@ fun DynamicFlipClock(
     // Box 包裹动态偏移的 FlipClock
     Box(
         modifier = Modifier
-            .offset(x = offsetX.value.dp, y = offsetY.value.dp) // 应用偏移动画
+            .offset(x = offsetX.value.dp, y = offsetY.value.dp) 
             .graphicsLayer {
                 // 确保裁剪内容，防止溢出
                 clip = true
@@ -288,18 +288,18 @@ fun FlipDigit(
     fontFamily: FontFamily = FontFamily.Default
 ) {
     var prevValue by remember { mutableStateOf(value) }
-    val rotation = remember { Animatable(0f) } // 控制旋转角度
+    val rotation = remember { Animatable(0f) } 
 
     LaunchedEffect(value) {
         if (value != prevValue) {
             // 新值出现，开始动画
             rotation.snapTo(0f)
             rotation.animateTo(
-                targetValue = 180f, // 翻转 180 度
+                targetValue = 180f, 
                 animationSpec = tween(durationMillis = 500, easing = LinearOutSlowInEasing)
             )
             prevValue = value
-            rotation.snapTo(0f) // 重置动画
+            rotation.snapTo(0f) 
         }
     }
 
@@ -313,7 +313,7 @@ fun FlipDigit(
                 color = textColor,
                 fontFamily = fontFamily,
                 modifier = Modifier.graphicsLayer {
-                    rotationX = rotation.value // 随着动画逐渐翻转
+                    rotationX = rotation.value 
                     cameraDistance = 1000f * density
                 }
             )
@@ -328,7 +328,7 @@ fun FlipDigit(
                 color = textColor,
                 fontFamily = fontFamily,
                 modifier = Modifier.graphicsLayer {
-                    rotationX = rotation.value - 180f // 从 -90 到 0 的过程
+                    rotationX = rotation.value - 180f 
                     cameraDistance = 1000f * density
                 }
             )

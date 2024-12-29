@@ -34,7 +34,7 @@ import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import com.example.mytime.R
 
-// 自定义字体
+// font
 val customFont = FontFamily(Font(R.font.style1))
 
 
